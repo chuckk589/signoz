@@ -275,8 +275,6 @@ services:
       - /etc/hostname:/etc/host_hostname:ro
       - /var/run/docker.sock:/var/run/docker.sock
     command: syslog+tcp://otel-collector:2255
-    environment:
-      - HTTP_PORT=81
     depends_on:
       - otel-collector
     restart: unless-stopped
