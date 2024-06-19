@@ -42,7 +42,10 @@ x-db-depend: &db-depend
     #   condition: service_healthy
     # clickhouse-3:
     #   condition: service_healthy
-
+    
+volumes:
+  data_clickhouse:
+  
 services:
 
   zookeeper-1:
@@ -110,7 +113,8 @@ services:
       - ./custom-function.xml:/etc/clickhouse-server/custom-function.xml
       - ./clickhouse-cluster.xml:/etc/clickhouse-server/config.d/cluster.xml
       # - ./clickhouse-storage.xml:/etc/clickhouse-server/config.d/storage.xml
-      - ./data/clickhouse/:/var/lib/clickhouse/
+      # - ./data/clickhouse/:/var/lib/clickhouse/
+      - data_clickhouse:/var/lib/clickhouse/
       - ./user_scripts:/var/lib/clickhouse/user_scripts/
 
   # clickhouse-2:
